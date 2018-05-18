@@ -45,7 +45,7 @@ class RenrenSpider(scrapy.Spider):
     with open('id.txt','r') as f:
       user_id = int(f.read())
     
-    for i in range(1,2):
+    for i in range(0,10000):
         user_id = user_id
         url='http://photo.renren.com/photo/' + '%s' % str(user_id) + '/albumlist/v7'
         yield Request(url,

@@ -46,14 +46,14 @@ class FilePipeline(object):
         date = datetime.now()
         date_name = date.strftime('%b %d')
 
-        if not os.path.exists('/users/junjieluo/photos/'+date_name):
-            os.mkdir('/users/junjieluo/photos/'+date_name)
+        if not os.path.exists('/media/user/photos/'+date_name):
+            os.mkdir('/media/user/photos/'date_name)
         user_name=item['user_id']
-        if not os.path.exists('/users/junjieluo/photos/'+date_name+'/'+str(user_name)):
-            os.mkdir('/users/junjieluo/photos/'+date_name+'/'+str(user_name))
+        if not os.path.exists('/media/user/photos/'+date_name+'/'+str(user_name)):
+            os.mkdir('/media/user/photos/'+date_name+'/'+str(user_name))
 
         file_name = item['url'].replace('/','_')
-        with open('/users/junjieluo/photos/{}/{}/{}'.format(date_name,user_name,file_name),'wb+') as f:
+        with open('/media/user/photos/{}/{}/{}'.format(date_name,user_name,file_name),'wb+') as f:
             f.write(requests.get(item['url'],headers=self.header(item['url'])).content)
         return item
 
